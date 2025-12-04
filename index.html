@@ -721,4 +721,102 @@
         </div>
         
         <div style="max-width: 700px; margin: 3rem auto; text-align: left; background: rgba(255,255,255,0.15); padding: 2rem; border-radius: 15px;">
-            <h3 style="color: white; text-align: center; margin-bottom: 1rem; font-size: 1.3rem;">📋 Email Template (Optional
+            <h3 style="color: white; text-align: center; margin-bottom: 1rem; font-size: 1.3rem;">📋 Email Template (Optional)</h3>
+            <p style="color: white; text-align: center; margin-bottom: 1.5rem; font-size: 0.95rem; opacity: 0.9;">Feel free to use this template or just send me a quick message. Either way works!</p>
+            
+            <div id="emailTemplate" style="background: white; color: #333; padding: 1.5rem; border-radius: 10px; font-family: monospace; font-size: 0.9rem; line-height: 1.8; position: relative;">
+                <p style="margin: 0 0 1rem 0;"><strong>Subject:</strong> Inquiry about SkyeRise Mentoring</p>
+                <p style="margin: 0 0 1rem 0;">Hi Skye,</p>
+                <p style="margin: 0 0 1rem 0;">I'm interested in learning more about your coaching and mentoring services for my gymnast.</p>
+                <p style="margin: 0 0 1rem 0;"><strong>Gymnast's Name:</strong> [Fill in]<br><strong>Age:</strong> [Fill in]<br><strong>Current Level:</strong> [Fill in]<br><strong>Gym:</strong> [Fill in]</p>
+                <p style="margin: 0 0 1rem 0;"><strong>What we're hoping to work on:</strong><br>[Example: fear of skills, competition anxiety, motivation, confidence, etc.]</p>
+                <p style="margin: 0 0 1rem 0;"><strong>Package interested in:</strong><br>[Free Consultation / Single Session / Starter Package / Commitment Package]</p>
+                <p style="margin: 0 0 1rem 0;">Looking forward to hearing from you!</p>
+                <p style="margin: 0;">Best,<br>[Your Name]</p>
+            </div>
+            
+            <button onclick="copyEmailTemplate()" style="display: block; margin: 1rem auto 0; background: #ff6b9d; color: white; border: none; padding: 0.75rem 2rem; border-radius: 50px; font-size: 1rem; font-weight: bold; cursor: pointer; box-shadow: 0 4px 15px rgba(255, 107, 157, 0.4); transition: transform 0.3s;">
+                Click to Copy Template
+            </button>
+            <p id="copyMessage" style="text-align: center; color: white; margin-top: 0.5rem; font-size: 0.9rem; opacity: 0; transition: opacity 0.3s;">✓ Copied to clipboard!</p>
+        </div>
+        
+        <p style="margin-top: 2rem; font-size: 0.95rem; opacity: 0.9;">I respond within 24 hours!</p>
+    </section>
+
+    <script>
+        function copyEmailTemplate() {
+            const template = `Subject: Inquiry about SkyeRise Mentoring
+
+Hi Skye,
+
+I'm interested in learning more about your coaching and mentoring services for my gymnast.
+
+Gymnast's Name: [Fill in]
+Age: [Fill in]
+Current Level: [Fill in]
+Gym: [Fill in]
+
+What we're hoping to work on:
+[Example: fear of skills, competition anxiety, motivation, confidence, etc.]
+
+Package interested in:
+[Free Consultation / Single Session / Starter Package / Commitment Package]
+
+Looking forward to hearing from you!
+
+Best,
+[Your Name]`;
+
+            navigator.clipboard.writeText(template).then(() => {
+                const message = document.getElementById('copyMessage');
+                message.style.opacity = '1';
+                setTimeout(() => {
+                    message.style.opacity = '0';
+                }, 3000);
+            }).catch(err => {
+                alert('Please manually copy the template above');
+            });
+        }
+    </script>
+
+    <footer>
+        <p>&copy; 2025 SkyeRise | Mental Coaching & Mentoring for Young Gymnasts</p>
+        <p>Empowering gymnasts ages 6-17 to overcome fear, build confidence, and rediscover their love for the sport.</p>
+    </footer>
+
+    <script>
+        // FAQ Accordion
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const faqItem = question.parentElement;
+                const wasActive = faqItem.classList.contains('active');
+                
+                // Close all FAQs
+                document.querySelectorAll('.faq-item').forEach(item => {
+                    item.classList.remove('active');
+                });
+                
+                // Open clicked FAQ if it wasn't active
+                if (!wasActive) {
+                    faqItem.classList.add('active');
+                }
+            });
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
